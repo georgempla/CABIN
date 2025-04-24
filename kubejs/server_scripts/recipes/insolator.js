@@ -1,55 +1,23 @@
-const flowers = [
-  "minecraft:pitcher_plant",
-  "minecraft:torchflower",
-  "minecraft:flowering_azalea_leaves",
-  "minecraft:cherry_leaves",
-  "minecraft:pink_petals",
-  "biomesoplenty:flowering_oak_leaves",
-  "biomesoplenty:jacaranda_leaves",
-  "biomesoplenty:snowblossom_leaves",
-  "biomesoplenty:white_petals",
-  "biomesoplenty:wildflower",
-  "biomesoplenty:rose",
-  "biomesoplenty:violet",
-  "biomesoplenty:lavender",
-  "biomesoplenty:white_lavender",
-  "biomesoplenty:pink_daffodil",
-  "biomesoplenty:pink_hibiscus",
-  "biomesoplenty:wilted_lily",
-  "biomesoplenty:glowflower",
-  "biomesoplenty:burning_blossom",
-  "biomesoplenty:endbloom",
-  "biomesoplenty:orange_cosmos",
-  "biomesoplenty:tall_lavender",
-  "biomesoplenty:tall_white_lavender",
-  "biomesoplenty:blue_hydrangea",
-  "biomesoplenty:goldenrod",
-  "biomesoplenty:icy_iris",
-  "farmersdelight:wild_carrots",
-  "farmersdelight:wild_potatoes",
-  "farmersdelight:wild_rice",
-  "farmersdelight:wild_carrots",
-  "farmersdelight:wild_beetroots",
-  "farmersdelight:wild_cabbages",
-  "farmersdelight:wild_tomatoes",
-  "farmersdelight:wild_onions",
-  "supplementaries:wild_flax"
-];
-
 ServerEvents.recipes(event => {
-  flowers.forEach(flower => {
-    event.custom({
-      "type": "thermal:insolator",
-      "ingredient": {
-        "item": flower
-      },
-      "result": [
-        {
-          "item": flower,
-          "chance": 2
+    // Remove existing insolator flower recipes since we're adding them back anyways
+    event.remove({ type: "thermal:insolator", input: "#minecraft:flowers", not:{ input:"#minecraft:saplings" } })
+
+    Ingredient.of("#minecraft:flowers").itemIds.forEach(flower => {
+        // Automatically adds all flowers as thermal insolator recipes. We're blacklisting special cases like leaves and saplings which are occasionally tagged as flowers for some reason
+        if( !( Ingredient.of("#minecraft:saplings").test(flower) || Ingredient.of("#minecraft:leaves").test(flower) ) ) {
+            event.custom({
+                "type": "thermal:insolator",
+                "ingredient": {
+                    "item": flower
+                },
+                "result": [
+                    {
+                    "item": flower,
+                    "chance": 2
+                    }
+                ],
+                "experience": 0
+            })
         }
-      ],
-      "experience": 0
-    });
-  });
-});
+    })
+})
