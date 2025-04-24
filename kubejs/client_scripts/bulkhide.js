@@ -17,7 +17,7 @@ JEIEvents.hideItems(event => {
     event.hide("ae2:medium_quartz_bud")
     event.hide("ae2:large_quartz_bud")
     event.hide("ae2:quartz_cluster")
-    
+
     event.hide("architects_palette:withered_bone")
 
     let begoneEarth = [
