@@ -78,6 +78,28 @@ ServerEvents.recipes(event => {
         M: "minecraft:redstone"
     })
 
+    // Remove existing insolator flower recipes since we're adding them back anyways
+    event.remove({ type: "thermal:insolator", input: "#minecraft:flowers", not:{ input:"#minecraft:saplings" } })
+
+    Ingredient.of("#minecraft:flowers").itemIds.forEach(flower => {
+        // Automatically adds all flowers as thermal insolator recipes. We're blacklisting special cases like leaves and saplings which are occasionally tagged as flowers for some reason
+        if( !( Ingredient.of("#minecraft:saplings").test(flower) || Ingredient.of("#minecraft:leaves").test(flower) ) ) {
+            event.custom({
+                "type": "thermal:insolator",
+                "ingredient": {
+                    "item": flower
+                },
+                "result": [
+                    {
+                        "item": flower,
+                        "chance": 2
+                    }
+                ],
+                "experience": 0
+            })
+        }
+    })
+
     // port melting recipes for dusts, ingots and gems
     const TICMETALS = [
         "aluminum",
@@ -183,6 +205,7 @@ ServerEvents.recipes(event => {
     event.recipes.thermal.chiller("tconstruct:ender_slime_ball", [Fluid.of("tconstruct:ender_slime", 250), "thermal:chiller_ball_cast"]).id("kubejs:chiller/ender_slime_ball");
     event.recipes.thermal.chiller("tconstruct:blood_slime_ball", [Fluid.of("tconstruct:blood", 250), "thermal:chiller_ball_cast"]).id("kubejs:chiller/blood_slime_ball");
 })
+
 
 ServerEvents.lowPriorityData(event => {
     addChiselingRecipe(event, "kubejs:chiseling_recipes/thermal/beetroot_block", ["farmersdelight:beetroot_crate", "thermal:beetroot_block"])
