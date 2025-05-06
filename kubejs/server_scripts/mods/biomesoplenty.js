@@ -14,9 +14,6 @@ if(Platform.isLoaded("biomesoplenty")) {
     wood_types.push("biomesoplenty:empyreal")
 
     ServerEvents.tags("item", event => {
-        // Has the block tag but not the item tag
-        event.add("minecraft:flowers", "biomesoplenty:waterlily")
-
         event.get("forge:vines").add("biomesoplenty:willow_vine").add("biomesoplenty:spanish_moss")
 
         event.get("kubejs:strainer/sands").add("biomesoplenty:white_sand").add("biomesoplenty:orange_sand")
