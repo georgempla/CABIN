@@ -205,9 +205,6 @@ ServerEvents.tags("item", event => {
 
     // This tag auto adds the beacon_payment_items tag which we don't want
     event.remove("create:create_ingots", "create:andesite_alloy")
-
-    // This had the #minecraft:flowers block tag but not the item tag??? Fixing for support with the thermal insolator flowers script
-    event.add("minecraft:flowers", "biomesoplenty:waterlily")
 })
 
 ServerEvents.tags("block", event => {
