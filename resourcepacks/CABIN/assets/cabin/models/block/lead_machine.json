@@ -3,7 +3,7 @@
 	"parent": "cabin:block/machine",
 	"textures": {
 		"0": "cabin:block/lead_machine",
-		"particle": "cabin:block/lead_machine"
+		"particle": "cabin:block/lead_casing"
 	},
 	"elements": [
 		{
