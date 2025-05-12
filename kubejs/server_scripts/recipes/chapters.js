@@ -541,7 +541,7 @@ ServerEvents.recipes(event => {
                 "type": "create:filling",
                 "ingredients": [
                     { "item": "kubejs:incomplete_logistic_mechanism" },
-                    { "fluid": "create:potion", "nbt": { "Bottle": "REGULAR", "Potion": "kubejs:haste" }, "amount": 1000 }
+                    { "fluid": "create:potion", "nbt": { "Bottle": "REGULAR", "Potion": "kubejs:haste" }, "amount": 250 }
                 ],
                 "results": [
                     { "item": "kubejs:incomplete_logistic_mechanism" }
@@ -551,7 +551,7 @@ ServerEvents.recipes(event => {
                 "type": "create:filling",
                 "ingredients": [
                     { "item": "kubejs:incomplete_logistic_mechanism" },
-                    { "fluid": "kubejs:liquid_pulp", "amount": 300 }
+                    { "fluid": "kubejs:liquid_pulp", "amount": 200 }
                 ],
                 "results": [
                     { "item": "kubejs:incomplete_logistic_mechanism" }
@@ -561,7 +561,7 @@ ServerEvents.recipes(event => {
                 "type": "create:filling",
                 "ingredients": [
                     { "item": "kubejs:incomplete_logistic_mechanism" },
-                    { "fluid": "kubejs:liquid_pulp", "amount": 300 }
+                    { "fluid": "kubejs:liquid_pulp", "amount": 200 }
                 ],
                 "results": [
                     { "item": "kubejs:incomplete_logistic_mechanism" }
@@ -571,7 +571,7 @@ ServerEvents.recipes(event => {
                 "type": "create:filling",
                 "ingredients": [
                     { "item": "kubejs:incomplete_logistic_mechanism" },
-                    { "fluid": "kubejs:liquid_pulp", "amount": 300 }
+                    { "fluid": "kubejs:liquid_pulp", "amount": 200 }
                 ],
                 "results": [
                     { "item": "kubejs:incomplete_logistic_mechanism" }
